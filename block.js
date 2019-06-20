@@ -1,5 +1,5 @@
 const  { GENESIS_DATA } = require('./config');
-// console.log(GENESIS_DATA)
+
 
 class Block {
   //the block class will receive values within individual instances of the Block
@@ -12,13 +12,20 @@ class Block {
   }
 
   static genesis() {
-    //we can refer to it inside bc of the static keyword
-    return new Block(GENESIS_DATA);
+    return new this(GENESIS_DATA);
   }
 
-
+  static mineBlock({ lastBlock, data }) {
+    console.log("HEYYYYY =>>>", lastBlock.hash)
+    return new this({
+      timestamp: Date.now(),
+      lastHash: lastBlock.hash,
+      data
+    });
+  }
 };
 
-
-
 module.exports = Block;
+
+
+

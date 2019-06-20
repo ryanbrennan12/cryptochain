@@ -19,9 +19,8 @@ describe('Block', () => {
   });
 
   describe('genesis()', () => {
-    //not on instance of Block, but on Block classname itself
-    //going to be a Static Function on the Block
     const genesisBlock = Block.genesis();
+
     it('returns a Block instance', () => {
       expect(genesisBlock instanceof Block).toBe(true);
     });
@@ -30,4 +29,31 @@ describe('Block', () => {
       expect(genesisBlock).toEqual(GENESIS_DATA);
     });
   });
+
+  describe('mineBlock()', () => {
+    const lastBlock = Block.genesis();
+    const data = 'mined data';
+    const minedBlock = Block.mineBlock({ lastBlock, data });
+    it('returns a Block instance', () => {
+      expect(minedBlock instanceof Block).toBe(true);
+    });
+
+    it('sets the `lastHash` to be the `hash` of the lastBlock', () => {
+      expect(mineBlock.lastHash).toEqual(lastBlock.hash);
+    });
+
+    it('sets the data', () => {
+      expect(mineBlock.data).toEqual(data);
+    });
+
+    it('sets a `timestamp`', () => {
+
+    });
+
+    it('sets a `timestamp`', () => {
+      expect(minedBlock.timestamp).not.toEqual(undefined);
+    });
+  });
 });
+
+
