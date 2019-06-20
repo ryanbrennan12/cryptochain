@@ -1,0 +1,14 @@
+{
+  "name": "cryptochain",
+  "version": "1.0.0",
+  "description": "ryan's crypto",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "author": "Ryan Brennan",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}
