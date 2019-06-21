@@ -23,12 +23,11 @@ describe('Blockchain', () => {
   });
 
 
-  describe('isValidChain(', () => {
-    describe('when the block does not start with the genisis block', () => {
+  describe('isValidChain()', () => {
+    describe('when the block does not start with the genesis block', () => {
       it('returns false', () => {
         blockchain.chain[0] = { data: 'fake-genisis'};
-
-        expect(Blockchain.isValidChain(blockchain)).toBe(false);
+        expect(blockchain.isValidChain(blockchain)).toBe(false);
       });
     });
     describe('when the chain starts with the genisis block and has multiple blocks', () => {
@@ -40,7 +39,7 @@ describe('Blockchain', () => {
       describe('and a lastHash reference has changed', () => {
         it('returns false', () => {
           blockchain.chain[2].lastHash = 'broken-lastHash';
-          expect(Blockchain.isValidChain(blockchain)).toBe(false);
+          expect(blockchain.isValidChain(blockchain)).toBe(false);
         });
       });
 
@@ -48,13 +47,14 @@ describe('Blockchain', () => {
       describe('and the chain contains a block with an invalid field', () => {
         it('returns false', () => {
           blockchain.chain[2].data = 'i am bad data!';
-          expect(Blockchain.isValidChain(blockchain)).toBe(false);
+          expect(blockchain.isValidChain(blockchain)).toBe(false);
         });
       });
 
       describe('and the chain does not contain any invalid blocks', () => {
         it('returns true', () => {
-          expect(Blockchain.isValidChain(blockchain)).toBe(true);
+          console.log('i am a blockchain', blockchain)
+          expect(blockchain.isValidChain(blockchain)).toBe(true);
         });
       });
     });
