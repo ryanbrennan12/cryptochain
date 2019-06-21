@@ -53,7 +53,7 @@ describe('Blockchain', () => {
         });
       });
       describe('and the chain does not contain any invalid blocks', () => {
-        it.only('returns true', () => {
+        it('returns true', () => {
 
           expect(Blockchain.isValidChain(blockchain.chain)).toBe(true);
         });
@@ -61,14 +61,5 @@ describe('Blockchain', () => {
     });
   });
 });
-
-// describe('and the chain does not contain any invalid blocks', () => {
-//   it('returns true', () => {
-//     console.log(blockchain)
-//     expect(Blockchain.isValidChain(blockchain.chain)).toBe(true);
-//   });
-// });
-
-
 
 
