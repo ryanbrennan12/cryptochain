@@ -16,7 +16,6 @@ class Block {
   }
 
   static mineBlock({ lastBlock, data }) {
-    console.log("HEYYYYY =>>>", lastBlock.hash)
     return new this({
       timestamp: Date.now(),
       lastHash: lastBlock.hash,
