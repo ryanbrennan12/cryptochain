@@ -1,4 +1,4 @@
-const BlockChain = require('./clockchain');
+const Blockchain = require('./blockchain');
 const Block = require('./block');
 
 describe('Blockchain', () => {
@@ -8,8 +8,8 @@ describe('Blockchain', () => {
     expect(blockchain.chain instanceof Array).toBe(true);
   });
 
-  it('starts with the genisis block', () => {
-    expect(blockchain.chain[0]).toEqual(Block.genisis());
+  it('starts with the genesis block', () => {
+    expect(blockchain.chain[0]).toEqual(Block.genesis());
   });
 
   it('adds a new block to the chain', () => {
