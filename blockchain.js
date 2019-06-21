@@ -13,25 +13,53 @@ class Blockchain {
     this.chain.push(newBlock);
   }
 
-  isValidChain() {
-    for (let i = 2; i < this.chain.length; i++) {
-      const currentBlock = this.chain[i];
-      const previousBlock = this.chain[i - 1];
-      const prevPrev = this.chain[i - 2];
+  // static isValidChain(chain) {
+  //   if (JSON.stringify(chain[0]) !== JSON.stringify(Block.genesis())) {
+  //     return false;
+  //   };
+  //   for (let i = 1; i < this.chain.length; i ++) {
+  //     const { timestamp, lastHash, hash, data } = chain[i];
+  //     const block = chain[i];
+  //     const actualLastHash = chain[i - 1].hash;
 
-      if (currentBlock.lastHash !== cryptoHash(previousBlock.timestamp, prevPrev.hash, previousBlock.data)) {
-        return false;
-      }
-    }
-    if (this.chain[0] !== Block.genesis()) {
+
+  //     if (lastHash !== actualLastHash) return false;
+
+  //     const validatedHash = cryptoHash(timestamp, lastHash, data);
+
+  //     if (hash !== validatedHash) return false;
+  //   }
+  //   return true;
+  // }
+  static isValidChain(chain) {
+    console.log('I am a chain ==>', chain[0])
+    console.log('I am Genesis ==>', Block.genesis())
+    console.log(JSON.stringify(chain[0]) === JSON.stringify(Block.genesis()))
+    // if (JSON.stringify(chain[0]) !== JSON.stringify(Block.genesis())) {
+    //   return false
+    // };
+    if (JSON.stringify(chain[0]) !== JSON.stringify(Block.genesis())) {
       return false;
     }
+
+    for (let i=1; i<chain.length; i++) {
+      const { timestamp, lastHash, hash, nonce, difficulty, data } = chain[i];
+      const actualLastHash = chain[i-1].hash;
+      const lastDifficulty = chain[i-1].difficulty;
+
+      // if (lastHash !== actualLastHash) return false;
+
+      const validatedHash = cryptoHash(timestamp, lastHash, data, nonce, difficulty);
+
+      // if (hash !== validatedHash) return false;
+
+
+    }
+
     return true;
   }
-};
+
+}
 
 
 module.exports = Blockchain;
-
-
-//.toEqual(cryptoHash(minedBlock.timestamp, lastBlock.hash, data));
