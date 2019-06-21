@@ -3,7 +3,7 @@ const Block = require('./block');
 const { GENESIS_DATA } = require('./config');
 //first arg to describe is name of tests followed by JS function to be run
 describe('Block', () => {
-  //variable for every relevant field of a block
+
   const timestamp = 'a-date';
   const lastHash = 'foo-hash';
   const hash = 'bar-hash';
@@ -11,7 +11,7 @@ describe('Block', () => {
   const block = new Block({ timestamp, lastHash, hash, data });
 
   it('has a timestamp, lastHash, hash, and data property', () => {
-    //actual value, expected equal
+
     expect(block.timestamp).toEqual(timestamp);
     expect(block.lastHash).toEqual(lastHash);
     expect(block.hash).toEqual(hash);
