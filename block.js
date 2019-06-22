@@ -19,10 +19,17 @@ class Block {
   }
 
   static mineBlock({ lastBlock, data }) {
-    const timestamp = Date.now();
+    let hash = 'k', timestamp;
+    // const timestamp = Date.now();
     const lastHash = lastBlock.hash;
     const { difficulty } = lastBlock;
     let nonce = 0;
+
+    while(hash.substring(0, difficulty) !== Array(difficulty + 1).join('0')) {
+      nonce ++;
+      timestamp = Date.now();
+      hash = cryptoHash(timestamp, lastHash, data, nonce, difficulty);
+    }
 
     return new this({
       timestamp,

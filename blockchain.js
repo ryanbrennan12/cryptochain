@@ -4,7 +4,6 @@ const cryptoHash = require('./crypto-hash');
 class Blockchain {
   constructor() {
     this.chain = [Block.genesis()];
-
   }
 
   addBlock({ data }) {
@@ -25,7 +24,7 @@ class Blockchain {
 
       if (lastHash !== actualLastHash) return false;
 
-      const validatedHash = cryptoHash(timestamp, lastHash, data);
+      const validatedHash = cryptoHash(timestamp, lastHash, data, nonce, difficulty);
       if (hash !== validatedHash) return false;
     }
 
@@ -48,6 +47,7 @@ class Blockchain {
 
 }
 module.exports = Blockchain;
+
 
 
 
