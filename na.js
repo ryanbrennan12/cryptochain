@@ -1,8 +1,7 @@
 const Block = require('./block');
 const cryptoHash = require('./crypto-hash');
 const { GENESIS_DATA, MINE_RATE } = require('./config');
-
-
+//first arg to describe is name of tests followed by JS function to be run
 describe('Block', () => {
 
   const timestamp = Date.now();
@@ -33,6 +32,7 @@ describe('Block', () => {
       expect(genesisBlock).toEqual(GENESIS_DATA);
     });
   });
+
 
   describe('mineBlock()', () => {
     const lastBlock = Block.genesis();
@@ -73,18 +73,12 @@ describe('Block', () => {
         .toEqual('0'.repeat(minedBlock.difficulty));
     });
 
-    it('adjusts the difficulty', () => {
 
-      const possibleResults = [lastBlock.difficulty + 1, lastBlock.difficulty - 1];
-      console.log('heyyy', possibleResults )
-      console.log('heeyyyyAGAIN', minedBlock.difficulty)
-
-      expect(possibleResults.includes(minedBlock.difficulty)).toBe(true);
-    });
   });
 
+
   describe('adjustDifficulty()', () => {
-    it('raises the difficulty for a quickly mined block', () => {
+    it.only('raises the difficulty for a quickly mined block', () => {
       expect(Block.adjustDifficulty({
         originalBlock: block, timestamp: block.timestamp + MINE_RATE - 100
       })).toEqual(block.difficulty + 1);
@@ -102,5 +96,7 @@ describe('Block', () => {
       expect(Block.adjustDifficulty({ originalBlock: block })).toEqual(1);
     });
   });
-
 });
+
+
+

@@ -22,12 +22,13 @@ class Block {
     let hash = 'k', timestamp;
 
     const lastHash = lastBlock.hash;
-    const { difficulty } = lastBlock;
+    let { difficulty } = lastBlock;
     let nonce = 0;
 
     while(hash.substring(0, difficulty) !== Array(difficulty + 1).join('0')) {
       nonce ++;
       timestamp = Date.now();
+      difficulty = Block.adjustDifficulty({ originalBlock: lastBlock, timestamp });
       hash = cryptoHash(timestamp, lastHash, data, nonce, difficulty);
     }
 

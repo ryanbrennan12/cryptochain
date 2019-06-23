@@ -88,7 +88,7 @@ describe('Blockchain', () => {
         expect(errorMock).toHaveBeenCalled();
       });
     });
-
+//IT'S NOT THESE
     describe('when the new chain IS LONGER', () => {
       beforeEach(() => {
         newChain.addBlock({ data: 'Bears' });
