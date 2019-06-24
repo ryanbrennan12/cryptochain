@@ -12,7 +12,7 @@ let average;
 
 
 const times = [];
-console.log(blockchain)
+
 for (let i = 0; i < 10000; i++) {
   prevTimestamp = blockchain.chain[blockchain.chain.length - 1].timestamp;
   blockchain.addBlock({ data: `block ${i}` });
