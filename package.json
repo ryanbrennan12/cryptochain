@@ -4,7 +4,8 @@
   "description": "ryan's crypto",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "start": "nodemon index.js"
   },
   "author": "Ryan Brennan",
   "license": "ISC",
@@ -12,7 +13,11 @@
     "jest": "^23.6.0"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "braces": "^3.0.2",
     "crypto-js": "^3.1.9-1",
-    "hex-to-binary": "^1.0.1"
+    "express": "^4.17.1",
+    "hex-to-binary": "^1.0.1",
+    "nodemon": "^1.19.1"
   }
 }
