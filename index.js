@@ -7,8 +7,7 @@ const app = express();
 const blockchain = new Blockchain();
 //idea is to broadcast new chain to any subscribed node any time a new block
 // is added to the chain
-const pubsub = newPubSub({ blockchain });
-const port = 3000;
+const pubsub = new PubSub({ blockchain });
 
 //test : too allow our pubsub implementation to subscribe to all channels asynchronously
 setTimeout(() => {
@@ -29,7 +28,16 @@ app.post('/api/mine', (req, res) => {
   res.redirect('/api/blocks');
 });
 
-app.listen(port, () => {
-  console.log(`We listening at localhost:${port}`);
+const DEFAULT_PORT = 3000;
+let PEER_PORT;
+
+if (process.env.GENERATE_PEER_PORT === 'true') {
+  PEER_PORT = DEFAULT_PORT + Math.ceil(Math.random() * 1000);
+}
+
+const PORT = PEER_PORT || DEFAULT_PORT;
+
+app.listen(PORT, () => {
+  console.log(`We listening at localhost:${PORT}`);
 })
 
