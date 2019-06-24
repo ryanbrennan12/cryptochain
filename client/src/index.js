@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 
 render(
   <div>
-    CRYPTOCHAIN!!!!
+    CRYPTOCHAIN!!!! Heyyyy
   </div>,
   document.getElementById('root')
   );
