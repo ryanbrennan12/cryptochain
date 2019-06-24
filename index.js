@@ -14,9 +14,9 @@ const DEFAULT_PORT = 3000;
 const ROOT_NODE_ADDRESS = `http://localhost:${DEFAULT_PORT}`
 
 //test : too allow our pubsub implementation to subscribe to all channels asynchronously
-setTimeout(() => {
-  pubsub.broadcastChain()
-}, 100);
+// setTimeout(() => {
+//   pubsub.broadcastChain()
+// }, 100);
 
 app.use(bodyParser.json());
 
@@ -58,6 +58,9 @@ const PORT = PEER_PORT || DEFAULT_PORT;
 app.listen(PORT, () => {
   console.log(`We listening at localhost:${PORT}`);
 
-  syncChains();
-})
+  if (PORT !== DEFAULT_PORT) {
+    syncChains();
+  }
+});
+
 
