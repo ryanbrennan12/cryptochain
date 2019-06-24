@@ -1,24 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
+const path = require('path');
+
 const Blockchain = require('./blockchain/blockchain');
 const PubSub = require('./app/pubsub');
 
 const app = express();
 const blockchain = new Blockchain();
-//idea is to broadcast new chain to any subscribed node any time a new block
-// is added to the chain
+
 const pubsub = new PubSub({ blockchain });
 
 const DEFAULT_PORT = 3000;
 const ROOT_NODE_ADDRESS = `http://localhost:${DEFAULT_PORT}`
 
-//test : too allow our pubsub implementation to subscribe to all channels asynchronously
-// setTimeout(() => {
-//   pubsub.broadcastChain()
-// }, 100);
-
 app.use(bodyParser.json());
+app.use(express.static('client/dist'));
 
 app.get('/api/blocks', (req, res) => {
   res.json(blockchain.chain);
@@ -34,6 +31,11 @@ app.post('/api/mine', (req, res) => {
   res.redirect('/api/blocks');
 });
 
+//need this??
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './client/dist/index.html'))
+});
+
 const syncChains = () => {
   request({ url: `${ROOT_NODE_ADDRESS}/api/blocks` }, (error, response, body) => {
     if (!error && response.statusCode === 200) {
@@ -45,8 +47,6 @@ const syncChains = () => {
   });
 };
 
-
-//creating our peer port
 let PEER_PORT;
 
 if (process.env.GENERATE_PEER_PORT === 'true') {

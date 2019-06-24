@@ -43,6 +43,7 @@ class Block {
   }
 
   static adjustDifficulty({ originalBlock, timestamp }) {
+    //get difficulty from our last block to determine the next
     const { difficulty } = originalBlock;
 
     if (difficulty < 1) return 1;

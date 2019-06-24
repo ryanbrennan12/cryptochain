@@ -3,6 +3,7 @@ const cryptoHash = require('../util/crypto-hash');
 
 class Blockchain {
   constructor() {
+    //init genesis block
     this.chain = [Block.genesis()];
   }
 
