@@ -1,6 +1,6 @@
-const Block = require('../block');
-const cryptoHash = require('../crypto-hash');
-const { GENESIS_DATA, MINE_RATE } = require('../config');
+const Block = require('./block.js');
+const cryptoHash = require('../util/crypto-hash');
+const { GENESIS_DATA, MINE_RATE } = require('../config.js');
 const hexToBinary = require('hex-to-binary');
 
 
