@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const Blockchain = require('./blockchain');
 
+
 const app = express();
 const blockchain = new Blockchain();
 const port = 3000;

@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "start-redis": "redis-server --daemonize yes",
+    "server-dev": "npm run start-redis && nodemon index.js"
   },
   "author": "Ryan Brennan",
   "license": "ISC",
@@ -18,6 +20,7 @@
     "crypto-js": "^3.1.9-1",
     "express": "^4.17.1",
     "hex-to-binary": "^1.0.1",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "redis": "^2.8.0"
   }
 }
