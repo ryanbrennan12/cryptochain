@@ -21,16 +21,18 @@ app.get('/api/blocks', (req, res) => {
   res.json(blockchain.chain);
 });
 
+app.get('/api/wallet-info', (req, res) => {
+  console.log('BOOM')
+  res.json('Im coming in hot from the server!!!!')
+});
+
 app.post('/api/mine', (req, res) => {
-  console.log(req.body)
   const { data } = req.body;
 
   blockchain.addBlock({ data });
-
   pubsub.broadcastChain();
   res.redirect('/api/blocks');
 });
-
 //need this??
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './client/dist/index.html'))
@@ -62,5 +64,9 @@ app.listen(PORT, () => {
     syncChains();
   }
 });
+
+
+
+
 
 
