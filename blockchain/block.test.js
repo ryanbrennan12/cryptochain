@@ -77,8 +77,6 @@ describe('Block', () => {
     it('adjusts the difficulty', () => {
 
       const possibleResults = [lastBlock.difficulty + 1, lastBlock.difficulty - 1];
-      console.log('heyyy', possibleResults )
-      console.log('heeyyyyAGAIN', minedBlock.difficulty)
 
       expect(possibleResults.includes(minedBlock.difficulty)).toBe(true);
     });

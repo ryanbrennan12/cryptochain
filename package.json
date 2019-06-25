@@ -13,6 +13,9 @@
     "dev-client": "npm run clean && parcel client/src/index.html --out-dir client/dist",
     "clean": "rm -rf .cache client/dist"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "author": "Ryan Brennan",
   "license": "ISC",
   "devDependencies": {
@@ -20,9 +23,15 @@
     "jest": "^23.6.0"
   },
   "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "body-parser": "^1.19.0",
     "braces": "^3.0.2",
     "crypto-js": "^3.1.9-1",
+    "elliptic": "^6.4.1",
     "express": "^4.17.1",
     "hex-to-binary": "^1.0.1",
     "nodemon": "^1.19.1",
@@ -31,6 +40,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "redis": "^2.8.0",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "uuid": "^3.3.2"
   }
 }
