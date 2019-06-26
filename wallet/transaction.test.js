@@ -69,6 +69,7 @@ describe('Transaction', () => {
     });
 
     describe('when the transaction is valid', () => {
+
       it('returns true', () => {
         expect(Transaction.validTransaction(transaction)).toBe(true);
       });

@@ -22,7 +22,7 @@ app.get('/api/blocks', (req, res) => {
 });
 
 app.get('/api/wallet-info', (req, res) => {
-  console.log('BOOM')
+
   res.json('Im coming in hot from the server!!!!')
 });
 
