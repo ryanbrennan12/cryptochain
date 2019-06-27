@@ -1,4 +1,4 @@
-import { log } from "util";
+// import { log } from "util";
 
 const uuid = require('uuid/v1');
 const { verifySignature } = require('../util');
