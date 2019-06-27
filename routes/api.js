@@ -9,21 +9,25 @@ const Wallet = require('../wallet');
 const TransactionPool = require('../wallet/transaction-pool');
 
 const blockchain = new Blockchain();
-const pubsub = new PubSub({ blockchain });
 const transactionPool = new TransactionPool();
+const pubsub = new PubSub({ blockchain, transactionPool });
 const wallet = new Wallet();
 
 const app = express();
 app.use(bodyParser.json());
 
+
+// @route  GET /api/blocks
+// @desc   Allows requester to get all blocks in the blockchain instance
+// @access Public
 router.get('/api/blocks', (req, res) => {
   res.json(blockchain.chain);
 });
 
-router.get('/api/transaction-pool-map', (req, res) => {
-  res.json(transactionPool.transactionMap);
-});
 
+// @route  POST /api/mine
+// @desc   Allows requester to get data in transaction pool map
+// @access Public
 router.post('/api/mine', (req, res) => {
   const { data } = req.body;
 
@@ -32,9 +36,11 @@ router.post('/api/mine', (req, res) => {
   res.redirect('/api/blocks');
 });
 
+// @route  POST /api/transaction
+// @desc   Allows requester to generate a transaction
+// @access Public
 router.post('/api/transaction', (req, res) => {
   const { amount, recipient } = req.body;
-
   let transaction = transactionPool.existingTransaction({ inputAddress: wallet.publicKey });
 
   try {
@@ -42,20 +48,31 @@ router.post('/api/transaction', (req, res) => {
       transaction.update({ senderWallet: wallet, recipient, amount });
     } else {
       transaction = wallet.createTransaction({ recipient, amount });
-
     }
   } catch(error) {
     //will make sure we don't run the next
-
     return res.json({ type: 'error', message: error.message });
   }
-
   transactionPool.setTransaction(transaction);
+
+  pubsub.broadcastTransaction(transaction);
   res.json({ type: 'success', transaction });
 });
 
+// @route  GET /api/transaction-pool-map
+// @desc   Allows requester to get data in transaction pool map
+// @access Public
+router.get('/api/transaction-pool-map', (req, res) => {
+  res.json(transactionPool.transactionMap);
+});
+
+
 
 module.exports = router;
+
+
+
+
 
 
 
