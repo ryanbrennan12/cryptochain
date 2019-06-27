@@ -8,7 +8,6 @@ const Blockchain = require('./blockchain/blockchain');
 
 
 const app = express();
-//our instantions
 const blockchain = new Blockchain();
 
 

@@ -6,11 +6,14 @@ const Wallet = require('./index');
 describe('TransactionPool', () => {
   let transactionPool;
   let transaction;
+  let senderWallet;
 
   beforeEach(() => {
     transactionPool = new TransactionPool();
+    senderWallet = new Wallet();
+
     transaction = new Transaction({
-      senderWallet: new Wallet(),
+      senderWallet,
       recipient: 'Ryan!',
       amount: 50
     })
@@ -24,8 +27,20 @@ describe('TransactionPool', () => {
       transactionPool.setTransaction(transaction);
 
       expect(transactionPool.transactionMap[transaction.id])
-      //tobe checks for original instance of that object
+        //tobe checks for original instance of that object
         .toBe(transaction);
     });
   });
+
+  describe('existingTransaction()', () => {
+    it('returns an existing transaction given an input address', () => {
+      transactionPool.setTransaction(transaction);
+
+      expect(
+        transactionPool.existingTransaction({ inputAddress: senderWallet.publicKey })
+      ).toBe(transaction);
+    });
+  });
+
+
 });

@@ -21,7 +21,7 @@ class Transaction {
   }
 
   createInput({ senderWallet, outputMap }) {
-    console.log('I AM THE ADDRESS', senderWallet)
+
     return {
       timestamp: Date.now(),
       amount: senderWallet.balance,
