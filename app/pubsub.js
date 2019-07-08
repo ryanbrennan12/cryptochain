@@ -2,13 +2,16 @@ const redis = require('redis');
 
 const CHANNELS = {
   TEST: 'TEST',
-  BLOCKCHAIN: 'BLOCKCHAIN'
+  BLOCKCHAIN: 'BLOCKCHAIN',
+  TRANSACTION: 'TRANSACTION'
 };
 
 class PubSub {
-  constructor({ blockchain }) {
+  constructor({ blockchain, transactionPool }) {
     //every PuSub instance will have a local blockchain to it
     this.blockchain = blockchain;
+    //setting it to incoming transactionPool object
+    this.transactionPool = transactionPool;
 
     this.publisher = redis.createClient();
     this.subscriber = redis.createClient();
@@ -16,7 +19,7 @@ class PubSub {
     this.subscriber.subscribe(CHANNELS.TEST);
     this.subscriber.subscribe(CHANNELS.BLOCKCHAIN);
 
-    this.subscribeToChannels
+    this.subscribeToChannels();
 
     this.subscriber.on('message', (channel, message) => {
       this.handleMessage(channel, message);
@@ -27,9 +30,15 @@ class PubSub {
     console.log(`Message received. Channel: ${channel}. Message: ${message}`);
 
     const parsedMessage = JSON.parse(message);
-
-    if (channel === CHANNELS.BLOCKCHAIN) {
-      this.blockchain.replaceChain(parsedMessage);
+    //now everytime we add a channel, we just add a case to this switch statement
+    switch(channel) {
+      case CHANNELS.BLOCKCHAIN:
+        this.blockchain.replaceChain(parsedMessage);
+        break;
+      case CHANNELS.TRANSACTION:
+        this.transactionPool.setTransaction(parsedMessage);
+      default:
+        return;
     }
   }
 
@@ -39,7 +48,8 @@ class PubSub {
     });
   }
   //eliminating redundancy
-  publish({ channel, message} ) {
+  publish({ channel, message } ) {
+    console.log('i am the channel', channel)
     this.subscriber.unsubscribe(channel, () => {
       this.publisher.publish(channel, message, () => {
         this.subscriber.subscribe(channel)
@@ -53,6 +63,16 @@ class PubSub {
       message: JSON.stringify(this.blockchain.chain)
     })
   }
+
+  broadcastTransaction(transaction) {
+    console.log('AM I BEING BROADCAST??', transaction)
+    this.publish({
+      channel: CHANNELS.TRANSACTION,
+      //can only send strings over channels
+      message: JSON.stringify(transaction)
+    });
+  }
 }
 
 module.exports = PubSub;
+
