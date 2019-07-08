@@ -7,11 +7,13 @@ const Blockchain = require('../blockchain/blockchain');
 const PubSub = require('../app/pubsub');
 const Wallet = require('../wallet');
 const TransactionPool = require('../wallet/transaction-pool');
+const TransactionMiner = require('../app/transaction-miner');
 
 const blockchain = new Blockchain();
 const transactionPool = new TransactionPool();
 const pubsub = new PubSub({ blockchain, transactionPool });
 const wallet = new Wallet();
+const transactionMiner = new TransactionMiner({ blockchain, transactionPool, wallet, pubsub });
 
 const app = express();
 app.use(bodyParser.json());
@@ -66,6 +68,16 @@ router.get('/api/transaction-pool-map', (req, res) => {
   res.json(transactionPool.transactionMap);
 });
 
+// @route  GET /api/mine-transactions
+// @desc   Allows requester to call mineTransactions method in order...
+// contd: to add a block of transactions to the blockchain
+// @access Public
+
+router.get('/api/mine-transactions', (req, res) => {
+  transactionMiner.mineTransactions();
+
+  res.redirect('/api/blocks')
+});
 
 
 module.exports = router;

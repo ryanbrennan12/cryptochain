@@ -65,7 +65,6 @@ class PubSub {
   }
 
   broadcastTransaction(transaction) {
-    console.log('AM I BEING BROADCAST??', transaction)
     this.publish({
       channel: CHANNELS.TRANSACTION,
       //can only send strings over channels
