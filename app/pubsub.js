@@ -33,7 +33,11 @@ class PubSub {
     //now everytime we add a channel, we just add a case to this switch statement
     switch(channel) {
       case CHANNELS.BLOCKCHAIN:
-        this.blockchain.replaceChain(parsedMessage);
+        this.blockchain.replaceChain(parsedMessage, () => {
+          this.transactionPool.clearBlockchainTransactions({
+            chain: parsedMessage
+          });
+        });
         break;
       case CHANNELS.TRANSACTION:
         this.transactionPool.setTransaction(parsedMessage);
