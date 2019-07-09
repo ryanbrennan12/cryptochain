@@ -1,6 +1,8 @@
 const Blockchain = require('../blockchain/blockchain');
 const Block = require('../blockchain/block');
 const cryptoHash = require('../util/crypto-hash.js');
+const Wallet = require('../wallet');
+const Transaction = require('../wallet/transaction');
 
 describe('Blockchain', () => {
   let blockchain, newChain, originalChain;
@@ -147,20 +149,9 @@ describe('Blockchain', () => {
         });
       });
     });
-
-    // describe('and the `validateTransactions` flag is true', () => {
-    //   it('calls validTransactionData()', () => {
-    //     const validTransactionDataMock = jest.fn();
-
-    //     blockchain.validTransactionData = validTransactionDataMock;
-
-    //     newChain.addBlock({ data: 'foo' });
-    //     blockchain.replaceChain(newChain.chain, true);
-
-    //     expect(validTransactionDataMock).toHaveBeenCalled();
-    //   });
-    // });
   });
+
+
 });
 
 

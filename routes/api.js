@@ -76,6 +76,20 @@ router.get('/api/mine-transactions', (req, res) => {
   res.redirect('/api/blocks');
 });
 
+// @route  GET api/wallet-info'
+// @desc   Allows requester to retrieve adress and balance
+// @access Public
+router.get('/api/wallet-info', (req, res) => {
+  const address = wallet.publicKey;
+
+  res.json({
+    address: address,
+    balance: Wallet.calculateBalance({ chain: blockchain.chain, address: address })
+   });
+});
+
+
+
 
 
 module.exports = router;
