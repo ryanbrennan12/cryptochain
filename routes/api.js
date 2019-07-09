@@ -18,14 +18,12 @@ const transactionMiner = new TransactionMiner({ blockchain, transactionPool, wal
 const app = express();
 app.use(bodyParser.json());
 
-
 // @route  GET /api/blocks
 // @desc   Allows requester to get all blocks in the blockchain instance
 // @access Public
 router.get('/api/blocks', (req, res) => {
   res.json(blockchain.chain);
 });
-
 
 // @route  POST /api/mine
 // @desc   Allows requester to get data in transaction pool map
@@ -72,15 +70,17 @@ router.get('/api/transaction-pool-map', (req, res) => {
 // @desc   Allows requester to call mineTransactions method in order...
 // contd: to add a block of transactions to the blockchain
 // @access Public
-
 router.get('/api/mine-transactions', (req, res) => {
   transactionMiner.mineTransactions();
 
-  res.redirect('/api/blocks')
+  res.redirect('/api/blocks');
 });
 
 
+
 module.exports = router;
+
+
 
 
 
