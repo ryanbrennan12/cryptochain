@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
+import Blocks from './Blocks';
 import { log } from 'util';
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      walletInfo: { address: 'foobbabb', balance: 9990 }
+      walletInfo: ''
     }
   }
 
   componentDidMount() {
     fetch('http://localhost:3000/api/wallet-info')
     .then(res => res.json())
-    .then(json => console.log('i am json', json))
+    .then((results) => {
+      this.setState({
+        walletInfo: results
+      })
+    })
   }
   render() {
     const { address, balance } = this.state.walletInfo;
@@ -21,6 +26,8 @@ class App extends Component {
 
         <div>Address: {address}</div>
         <div>Balance: {balance}</div>
+        <br />
+        <Blocks />
       </div>
     )
   }
