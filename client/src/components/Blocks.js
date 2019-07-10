@@ -12,6 +12,7 @@ class Blocks extends Component {
     fetch('http://localhost:3000/api/blocks')
     .then(res => res.json())
     .then((results) => {
+      console.log('RESULTS', results)
       this.setState({
         blocks: results
       })
