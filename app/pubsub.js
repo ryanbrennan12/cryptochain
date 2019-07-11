@@ -7,14 +7,14 @@ const CHANNELS = {
 };
 
 class PubSub {
-  constructor({ blockchain, transactionPool }) {
+  constructor({ blockchain, transactionPool, redisUrl }) {
     //every PuSub instance will have a local blockchain to it
     this.blockchain = blockchain;
     //setting it to incoming transactionPool object
     this.transactionPool = transactionPool;
 
-    this.publisher = redis.createClient();
-    this.subscriber = redis.createClient();
+    this.publisher = redis.createClient(redisUrl);
+    this.subscriber = redis.createClient(redisUrl);
 
     this.subscriber.subscribe(CHANNELS.TEST);
     this.subscriber.subscribe(CHANNELS.BLOCKCHAIN);
