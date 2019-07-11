@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { log } from 'util';
 import logo from '../assets/logo.png';
 
@@ -26,15 +27,17 @@ class App extends Component {
       <div className='App'>
         <img className='logo' src={logo}></img>
         <br />
-        <div>Welcome to the blockchain...</div>
+        <div>StellumCoin powered by Blockchain</div>
         <br />
-        <div className="WalletInfo">
+        <div><Link to='/blocks'>Blocks</Link></div>
+        <div><Link to='/conduct-transaction'>Conduct a Transaction</Link></div>
+        <br />
+        <div className='WalletInfo'>
           <div>Address: {address}</div>
           <div>Balance: {balance}</div>
         </div>
-        <br />
       </div>
-    )
+    );
   }
 }
 
