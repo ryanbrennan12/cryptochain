@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/api/wallet-info')
+    fetch(`${document.location.origin}/api/wallet-info`)
       .then(res => res.json())
       .then((results) => {
         this.setState({

@@ -11,7 +11,7 @@ class Blocks extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/api/blocks')
+    fetch(`${document.location.origin}/api/blocks`)
     .then(res => res.json())
     .then((results) => {
       console.log('RESULTS', results)
