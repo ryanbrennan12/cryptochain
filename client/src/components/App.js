@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Blocks from './Blocks';
 import { log } from 'util';
 import logo from '../assets/logo.png';
 
@@ -34,7 +33,6 @@ class App extends Component {
           <div>Balance: {balance}</div>
         </div>
         <br />
-        <Blocks />
       </div>
     )
   }
