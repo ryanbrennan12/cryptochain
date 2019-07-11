@@ -27,7 +27,7 @@ class PubSub {
   }
 
   handleMessage(channel, message) {
-    console.log(`Message received. Channel: ${channel}. Message: ${message}`);
+    // console.log(`Message received. Channel: ${channel}. Message: ${message}`);
 
     const parsedMessage = JSON.parse(message);
     //now everytime we add a channel, we just add a case to this switch statement
