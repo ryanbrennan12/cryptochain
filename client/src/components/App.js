@@ -19,7 +19,7 @@ class App extends Component {
         <img className='logo' src={logo}></img>
         <br />
         <div>
-          Welcome to the blockchain...
+          StellumCoin Powered by Blockchain
         </div>
         <br />
         <div><Link to='/blocks'>Blocks</Link></div>
@@ -27,8 +27,8 @@ class App extends Component {
         <div><Link to='/transaction-pool'>Transaction Pool</Link></div>
         <br />
         <div className='WalletInfo'>
-          <div>Address: {address}</div>
-          <div>Balance: {balance}</div>
+          <div>Your Wallet Address: {address}</div>
+          <div>your Wallet Balance: {balance}</div>
         </div>
       </div>
     );
