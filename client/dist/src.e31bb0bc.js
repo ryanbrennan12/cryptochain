@@ -48077,15 +48077,25 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _Block = _interopRequireDefault(require("./Block"));
+var _reactBootstrap = require("react-bootstrap");
 
 var _reactRouterDom = require("react-router-dom");
+
+var _Block = _interopRequireDefault(require("./Block"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -48108,16 +48118,34 @@ var Blocks =
 function (_Component) {
   _inherits(Blocks, _Component);
 
-  function Blocks(props) {
+  function Blocks() {
+    var _getPrototypeOf2;
+
     var _this;
+
+    var _temp;
 
     _classCallCheck(this, Blocks);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Blocks).call(this, props));
-    _this.state = {
-      blocks: []
-    };
-    return _this;
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _possibleConstructorReturn(_this, (_temp = _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Blocks)).call.apply(_getPrototypeOf2, [this].concat(args))), _this.state = {
+      blocks: [],
+      paginatedId: 1,
+      blocksLength: 0
+    }, _this.fetchPaginatedBlocks = function (paginatedId) {
+      return function () {
+        fetch("".concat(document.location.origin, "/api/blocks/").concat(paginatedId)).then(function (response) {
+          return response.json();
+        }).then(function (json) {
+          return _this.setState({
+            blocks: json
+          });
+        });
+      };
+    }, _temp));
   }
 
   _createClass(Blocks, [{
@@ -48125,23 +48153,33 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      fetch("".concat(document.location.origin, "/api/blocks")).then(function (res) {
-        return res.json();
-      }).then(function (results) {
-        console.log('RESULTS', results);
-
-        _this2.setState({
-          blocks: results
+      fetch("".concat(document.location.origin, "/api/blocks/length")).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this2.setState({
+          blocksLength: json
         });
       });
+      this.fetchPaginatedBlocks(this.state.paginatedId)();
     }
   }, {
     key: "render",
     value: function render() {
-      console.log('heyyy', this.state);
+      var _this3 = this;
+
+      console.log('this.state', this.state);
       return _react.default.createElement("div", null, _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
-      }, "Home")), _react.default.createElement("h3", null, "Blocks"), this.state.blocks.map(function (block, i) {
+      }, "Home")), _react.default.createElement("h3", null, "Blocks"), _react.default.createElement("div", null, _toConsumableArray(Array(Math.ceil(this.state.blocksLength / 5)).keys()).map(function (key) {
+        var paginatedId = key + 1;
+        return _react.default.createElement("span", {
+          key: key,
+          onClick: _this3.fetchPaginatedBlocks(paginatedId)
+        }, _react.default.createElement(_reactBootstrap.Button, {
+          bsSize: "small",
+          variant: "danger"
+        }, paginatedId), ' ');
+      })), this.state.blocks.map(function (block) {
         return _react.default.createElement(_Block.default, {
           key: block.hash,
           block: block
@@ -48153,12 +48191,9 @@ function (_Component) {
   return Blocks;
 }(_react.Component);
 
-{
-  /* <Block key={block.hash} block={block}/> */
-}
 var _default = Blocks;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./Block":"components/Block.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/ConductTransaction.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-bootstrap":"../../node_modules/react-bootstrap/es/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./Block":"components/Block.js"}],"components/ConductTransaction.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -48559,7 +48594,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51604" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61979" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
