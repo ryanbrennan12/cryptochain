@@ -47352,7 +47352,7 @@ function (_Component) {
         }, _react.default.createElement("div", null, knownAddress), _react.default.createElement("br", null));
       }), _react.default.createElement("br", null), _react.default.createElement(_reactBootstrap.FormGroup, null, _react.default.createElement(_reactBootstrap.FormControl, {
         input: "text",
-        placeholder: "recipient",
+        placeholder: "Wallet Address",
         value: this.state.recipient,
         onChange: this.updateRecipient
       })), _react.default.createElement(_reactBootstrap.FormGroup, null, _react.default.createElement(_reactBootstrap.FormControl, {
@@ -47635,7 +47635,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64250" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61032" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
