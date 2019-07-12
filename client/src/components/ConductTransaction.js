@@ -55,7 +55,7 @@ class ConductTransaction extends Component {
         <FormGroup>
           <FormControl
             input='text'
-            placeholder='recipient'
+            placeholder='Wallet Address'
             value={this.state.recipient}
             onChange={this.updateRecipient}
           />
