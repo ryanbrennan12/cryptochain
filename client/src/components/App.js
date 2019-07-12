@@ -28,7 +28,7 @@ class App extends Component {
         <br />
         <div className='WalletInfo'>
           <div>Your Wallet Address: {address}</div>
-          <div>your Wallet Balance: {balance}</div>
+          <div>Your Wallet Balance: $SC {balance}</div>
         </div>
       </div>
     );
