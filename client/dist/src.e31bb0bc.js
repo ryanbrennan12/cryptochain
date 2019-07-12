@@ -30643,7 +30643,7 @@ function (_Component) {
         to: "/conduct-transaction"
       }, "Conduct a Transaction")), _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
         to: "/transaction-pool"
-      }, "Transaction Pool")), _react.default.createElement("br", null), _react.default.createElement("div", {
+      }, "Transaction Pool & Mining")), _react.default.createElement("br", null), _react.default.createElement("div", {
         className: "WalletInfo"
       }, _react.default.createElement("div", null, "Your Wallet Address: ", address), _react.default.createElement("div", null, "Your Wallet Balance: $SC ", balance)));
     }
@@ -47635,7 +47635,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59674" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64250" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
