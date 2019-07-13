@@ -26,7 +26,7 @@ router.get('/api/blocks', (req, res) => {
 });
 
 // @route  POST /api/mine
-// @desc   Allows requester to get data in transaction pool map
+// @desc   Allows requester to mine a block and add it to the chain
 // @access Public
 router.post('/api/mine', (req, res) => {
   const { data } = req.body;
@@ -89,7 +89,7 @@ router.get('/api/wallet-info', (req, res) => {
 });
 
 // @route  GET /api/known-addresses
-// @desc   Allows requester to retrieve address and balance
+// @desc   When users goes to conduct a transaction, this route is called to display known wallet addresses on that page
 // @access Public
 router.get('/api/known-addresses', (req, res) => {
   const addressMap = {};

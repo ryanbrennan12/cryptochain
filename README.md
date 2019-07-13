@@ -71,6 +71,23 @@ Starting in `pubsub.js`
 
 ### 1.4.2. API endpoints
 
+Below you can find all available endpoints.
+
+  - GET `/api/blocks`
+    - retrieves all paths in database (shouldn't really be used except for testing)
+  - POST `/api/mine`
+    - Allows requester to mine a block and add it to the chain
+  - POST `/api/transaction`
+    - Allows requester to generate a transaction
+  - GET `/api/transaction-pool-map`
+    - Allows requester to get data in transaction pool map (transactions yet to be mined)
+  - GET `/api/mine-transactions`
+    - Allows requester to call `mineTransactions` method in order to add a block of transactions to the blockchain
+  - GET `/api/wallet-info`
+    - Allows requester to retrieve address and balance
+  - GET `/api/known-addresses`
+    - When users goes to conduct a transaction, this route is called to display known wallet addresses on that page
+
 
 
 
