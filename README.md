@@ -6,6 +6,8 @@
     <!-- - [1.3.3. Individual Component Page](#133-individual-component-page) -->
  - [1.4. API](#14-api)
  - [1.4.2. API endpoints](#142-api-endpoints)
+ - [1.5 Walkthrough Continued](#15-walkthrough-continued)
+ - [1.5.2 Cryptocurrency]
 
 ## 1.3. Usage
 
@@ -88,8 +90,49 @@ Below you can find all available endpoints.
   - GET `/api/known-addresses`
     - When users goes to conduct a transaction, this route is called to display known wallet addresses on that page
 
+## 1.5. Walkthrough Continued
+### 1.5.2. Cryptocurrency
 
+Now in `wallet/index.js` with the Wallet Class
+ - Digital wallet is a way to allow multiple users to interact with eachother in the cryptocurrency
+ - Primary function:
+    1) Hold all-important key-pair which contains a `public` and a `private` key
+    2) `Public` is an address to receive currency on the system and `private` must be kept secret
+ - By using private key in the key pair, wallet has capability of creating unique signatures for data
 
+In `transaction.js`
+  - Transaction objects are official records of the exchange of currency between two wallets
+  - `input`: Contains official signature form actual sender wallet
+  - `outputmap`: Contains any values that were conducted in the transaction
+    1) Recipient
+    2) Then any other values for recipient in the update function
+    3) Remaining balance for the sender wallet
+
+As multiple users start contributing these transactions we collect that data in the TransactionPool structure
+
+In `transaction-pool.js`
+  - `TransactionPool` structure has a Inner Transaction map that can set transactions and update existing ones in the same code path or even replace entire transaction map if it needs to.
+  - `TransactionMiner` object
+    1) Gets valid transactions from the pool
+    2) Has reward transaction for getting currency for getting valid hash that consists of the valid transactions
+    3) Then adds it to the blockchain and broadcasts the chain
+    4) Clears local transaction pool
+
+With transactions recorded in the blockchain, allows wallet to keep track of an accurate balance
+
+Back to `wallet/index.js` and the `calculateBalance` method:
+   - Idea is that balance at any point in time is the output amount for that wallet at it’s most recent transaction
+   - In addition to any output amounts that it received in the blockchain history after that most recent transaction
+
+Lastly to ` blockchain.js`
+ - `validTransactioData` method enforces forming rules for the cryptocurrency:
+    1) There should not be duplicate miner rewards in the block
+    2) Transaction should have a valid shape overall
+    3) Meaning its input signature should be good and output map should be formatted correctly
+      1) Outputotal that matches the input amount
+      2) Miner rewards should have the correct mining reward value as well
+      3) Input balances must be valid and correct according to the blockchain history
+      4) Should be no duplicates of a transaction within a block
 
 
 
