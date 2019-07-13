@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Transaction from './Transaction';
 import { Button } from 'react-bootstrap';
+import Transaction from './Transaction';
+import { Link } from 'react-router-dom';
 import history from '../history';
 
 const POLL_INERVAL_MS = 10000;
@@ -20,7 +20,6 @@ class TransactionPool extends Component {
       .then(response => {
         if (response.status === 200) {
           alert('success');
-
           history.push('/blocks');
         } else {
           alert('The mine-transactions block request did not complete.');
@@ -30,7 +29,7 @@ class TransactionPool extends Component {
 
   componentDidMount() {
     this.fetchTransactionPoolMap();
-    //PICKUP TRANSACTION SUBMITTED BY PEERS IN THE BLOCKCHAIN NETWORK
+
     this.fetchPoolMapInterval = setInterval(
       () => this.fetchTransactionPoolMap(),
       POLL_INERVAL_MS
@@ -58,7 +57,7 @@ class TransactionPool extends Component {
         }
         <hr />
         <Button
-          variant="danger"
+          bsStyle="danger"
           onClick={this.fetchMineTransactions}
         >
           Mine the Transactions

@@ -23,14 +23,13 @@ class ConductTransaction extends Component {
   conductTransaction = () => {
     const { recipient, amount } = this.state;
 
-    fetch(`${document.location.origin}/api/transaction`, {
+    fetch(`${document.location.origin}/api/transact`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ recipient, amount })
     }).then(response => response.json())
       .then(json => {
         alert(json.message || json.type);
-        //after closing alert, this pushes...like a redirect
         history.push('/transaction-pool');
       });
   }
@@ -56,7 +55,7 @@ class ConductTransaction extends Component {
         <FormGroup>
           <FormControl
             input='text'
-            placeholder='recipient'
+            placeholder='Wallet Address'
             value={this.state.recipient}
             onChange={this.updateRecipient}
           />
@@ -71,7 +70,7 @@ class ConductTransaction extends Component {
         </FormGroup>
         <div>
           <Button
-            variant="danger"
+            bsStyle="danger"
             onClick={this.conductTransaction}
           >
             Submit
