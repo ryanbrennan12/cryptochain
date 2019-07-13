@@ -77,7 +77,7 @@ router.get('/api/mine-transactions', (req, res) => {
 });
 
 // @route  GET api/wallet-info'
-// @desc   Allows requester to retrieve adress and balance
+// @desc   Allows requester to retrieve address and balance
 // @access Public
 router.get('/api/wallet-info', (req, res) => {
   const address = wallet.publicKey;
@@ -88,11 +88,28 @@ router.get('/api/wallet-info', (req, res) => {
    });
 });
 
+// @route  GET /api/known-addresses
+// @desc   Allows requester to retrieve address and balance
+// @access Public
+router.get('/api/known-addresses', (req, res) => {
+  const addressMap = {};
 
+  for (let block of blockchain.chain) {
+    for (let transaction of block.data) {
+      const recipient = Object.keys(transaction.outputMap);
+
+      recipient.forEach(recipient => addressMap[recipient] = recipient);
+    }
+  }
+
+  res.json(Object.keys(addressMap));
+});
 
 
 
 module.exports = router;
+
+
 
 
 
