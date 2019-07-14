@@ -30,7 +30,7 @@ The following are the deployed nodes existing in the network which are all able 
 
 ## 1.3. Usage
 
-StellumCoin is a custom Blockchain-powered cryptocurrency. Wallet and persisted transaction data stored on a ledger through a network of multiple deployed Heroku nodes on Node JS backends.  There is a proof-of-work system to demand computational power by needing to use cryptography and data hashing to protect the system against abuse. There is also validation system for the transactional data of the blockchain itself.
+StellumCoin is a custom Blockchain-powered cryptocurrency. Wallet and persisted transaction data stored on a ledger through a network of multiple deployed Heroku nodes on Node JS backends.  There is a proof-of-work system to demand computational power by needing to use cryptography and data hashing to protect the system against abuse. There is also a validation system for the transactional data of the blockchain itself.
 
 ### 1.3.2. Walkthrough and Proof of Work System
 
