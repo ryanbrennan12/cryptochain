@@ -1,5 +1,6 @@
 # 1. StellumCoin TOC
 
+  - [1.2 UI](#12-UI)
   - [1.3. Usage](#13-usage)
     - [1.3.2. Walkthrough and Proof of Work System](#132-walkthrough-and-proof-of-work-system)
     - [1.3.3. Fifty One Percent Attack](#133-fifty-one-percent-attack)
@@ -7,7 +8,12 @@
  - [1.4. API](#14-api)
  - [1.4.2. API endpoints](#142-api-endpoints)
  - [1.5 Walkthrough Continued](#15-walkthrough-continued)
- - [1.5.2 Cryptocurrency]
+ - [1.5.2 Cryptocurrency](#152-cryptocurrency)
+
+## 1.2 UI
+Example of a transaction that is sent to a wallet.  That transaction is then mined into a block (most blocks have multiple transactions but we are doing only one for the sake of the example) and nd added to the blockchain.  Details of the transactions within each block are are abled to be viewed by the user when clicked through.
+
+![upload](UI.gif)
 
 ## 1.3. Usage
 
