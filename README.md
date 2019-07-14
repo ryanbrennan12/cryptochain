@@ -184,13 +184,21 @@ Lastly to ` blockchain.js`
 
 Below was my strategy for developing my test suites which are stored in `wallet/` and `blockchain` folders. Endpoints http:// requests test effective integration between server side services and routing calls.  Unit tests for each service are also tested. I used `jest` and the tests can be run by `npm test`
 
+
+  - [Wallet Tests](https://github.com/ryanbrennan12/stellumcoin/blob/master/wallet/index.test.js)
+  - [Transaction Tests](https://github.com/ryanbrennan12/stellumcoin/blob/master/wallet/transaction.test.js)
+  - [Transaction Pool Tests](https://github.com/ryanbrennan12/stellumcoin/blob/master/wallet/transaction-pool.test.js)
+  - [Block Tests](https://github.com/ryanbrennan12/stellumcoin/blob/master/blockchain/block.test.js)
+  - [Blockchain Tests](https://github.com/ryanbrennan12/stellumcoin/blob/master/blockchain/blockchain.test.js)
+
+
 ```
 - test suite
   - unit tests
-    - block
-    - blockchain
     - transaction
     - transaction-pool
+    - block
+    - blockchain
   - integration
     - endpoints
 ```
