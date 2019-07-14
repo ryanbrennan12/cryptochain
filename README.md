@@ -1,23 +1,23 @@
 # 1. StellumCoin TOC
   - [1 StellumCoin TOC](#1-stellumcoin-toc)
   - [1.2 UI](#12-UI)
-  - [1.2.2. Nodes in Network](#122-nodes-in-network)
-  - [1.2.3. Development Setup](#123-development-setup)
+    - [1.2.2. Nodes in Network](#122-nodes-in-network)
+    - [1.2.3. Development Setup](#123-development-setup)
   - [1.3. Usage](#13-usage)
     - [1.3.2. Walkthrough and Proof of Work System](#132-walkthrough-and-proof-of-work-system)
     - [1.3.3. Fifty One Percent Attack](#133-fifty-one-percent-attack)
     <!-- - [1.3.3. Individual Component Page](#133-individual-component-page) -->
  - [1.4. API](#14-api)
- - [1.4.2. API endpoints](#142-api-endpoints)
+    - [1.4.2. API endpoints](#142-api-endpoints)
  - [1.5 Walkthrough Continued](#15-walkthrough-continued)
- - [1.5.2 Cryptocurrency](#152-cryptocurrency)
+    - [1.5.2 Cryptocurrency](#152-cryptocurrency)
 
 ## 1.2 UI
 Example of a transaction that is sent to a wallet.  That transaction is then mined into a block (most blocks have multiple transactions but we are doing only one for the sake of the example) and is added to the blockchain.  Details of the transactions within each block are able to be viewed  by the user when clicked through.
 
 ![upload](UI.gif)
 
-## 1.2.2. Nodes in Network
+### 1.2.2. Nodes in Network
 
 The following are the deployed nodes existing in the network which are all able to interact with one another and maintain the same blockchain.
 
@@ -27,6 +27,21 @@ The following are the deployed nodes existing in the network which are all able 
  - Node 4: [www.stellumcoinfour.com](https://obscure-ridge-16236.herokuapp.com)
  - Node 5: [www.stellumcoinfive.com](https://vast-garden-13834.herokuapp.com)
  - Node 6: [www.stellumcoinsix.com](https://limitless-wildwood-80470.herokuapp.com)
+
+
+### 1.2.3. Development Setup
+
+This service uses the following dev stack:
+
+  - Server: [Express/Node/NPM](https://expressjs.com)
+  - PubSub: [Redis](https://redis.io/topics/pubsub)
+  - Deployment: [Heroku](https://www.heroku.com)
+  - Client: [React](https://reactjs.org)
+  - Testing: [Jest](https://jestjs.io)
+
+  - Important Libs:
+    - hex-to-binary (data hashing)
+    - uuid
 
 ## 1.3. Usage
 
