@@ -6,11 +6,11 @@
   - [1.3. Usage](#13-usage)
     - [1.3.2. Walkthrough and Proof of Work System](#132-walkthrough-and-proof-of-work-system)
     - [1.3.3. Fifty One Percent Attack](#133-fifty-one-percent-attack)
-    <!-- - [1.3.3. Individual Component Page](#133-individual-component-page) -->
  - [1.4. API](#14-api)
     - [1.4.2. API endpoints](#142-api-endpoints)
  - [1.5 Walkthrough Continued](#15-walkthrough-continued)
     - [1.5.2 Cryptocurrency](#152-cryptocurrency)
+ - [1.6 Unit and Integration Tests](#16-unit-and-integration-tests)
 
 ## 1.2 UI
 Example of a transaction that is sent to a wallet.  That transaction is then mined into a block (most blocks have multiple transactions but we are doing only one for the sake of the example) and is added to the blockchain.  Details of the transactions within each block are able to be viewed  by the user when clicked through.
@@ -43,6 +43,17 @@ This service uses the following dev stack:
     - hex-to-binary (data hashing)
     - uuid
 
+``` sh
+# install npm dependencies
+$> cd /path/to/stellum
+$> npm install
+# install and start service
+
+$> npm run dev
+# run this for as many instances as you would like in your local network
+$> npm run dev-peer
+# enjoy
+```
 ## 1.3. Usage
 
 StellumCoin is a custom Blockchain-powered cryptocurrency. Wallet and persisted transaction data stored on a ledger through a network of multiple deployed Heroku nodes on Node JS backends.  There is a proof-of-work system to demand computational power by needing to use cryptography and data hashing to protect the system against abuse. There is also a validation system for the transactional data of the blockchain itself.
@@ -168,5 +179,20 @@ Lastly to ` blockchain.js`
       3) Input balances must be valid and correct according to the blockchain history
       4) Should be no duplicates of a transaction within a block
 
+
+## 1.6. Unit and Integration Tests
+
+Below was my strategy for developing my test suites which are stored in `wallet/` and `blockchain` folders. Endpoints http:// requests test effective integration between server side services and routing calls.  Unit tests for each service are also tested. I used `jest` and the tests can be run by `npm test`
+
+```
+- test suite
+  - unit tests
+    - block
+    - blockchain
+    - transaction
+    - transaction-pool
+  - integration
+    - endpoints
+```
 
 
