@@ -1,7 +1,7 @@
 # 1. StellumCoin TOC
   - [1 StellumCoin TOC](#1-stellumcoin-toc)
   - [1.2 UI](#12-UI)
-  - [1.2.2. Nodes in Network](#122nodes-in-network)
+  - [1.2.2. Nodes in Network](#122-nodes-in-network)
   - [1.3. Usage](#13-usage)
     - [1.3.2. Walkthrough and Proof of Work System](#132-walkthrough-and-proof-of-work-system)
     - [1.3.3. Fifty One Percent Attack](#133-fifty-one-percent-attack)
