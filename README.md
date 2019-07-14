@@ -1,6 +1,7 @@
 # 1. StellumCoin TOC
 
   - [1.2 UI](#12-UI)
+  - [1.2.2. Nodes in Network](#122nodes-in-network)
   - [1.3. Usage](#13-usage)
     - [1.3.2. Walkthrough and Proof of Work System](#132-walkthrough-and-proof-of-work-system)
     - [1.3.3. Fifty One Percent Attack](#133-fifty-one-percent-attack)
@@ -14,6 +15,17 @@
 Example of a transaction that is sent to a wallet.  That transaction is then mined into a block (most blocks have multiple transactions but we are doing only one for the sake of the example) and nd added to the blockchain.  Details of the transactions within each block are are abled to be viewed by the user when clicked through.
 
 ![upload](UI.gif)
+
+## 1.2.2. Nodes in Network
+
+The following are the deployed nodes existing in the network all able to interact with one another and maintain the same blockchain
+
+ - Node 1: [www.stellumcoinone.com](https://quiet-wave-32128.herokuapp.com)
+ - Node 2: [www.stellumcointwo.com](https://vast-oasis-19068.herokuapp.com)
+ - Node 3: [www.stellumcointhree.com](https://guarded-citadel-78699.herokuapp.com)
+ - Node 4: [www.stellumcoinfour.com](https://obscure-ridge-16236.herokuapp.com)
+ - Node 5: [www.stellumcoinfive.com](https://vast-garden-13834.herokuapp.com)
+ - Node 6: [www.stellumcoinsix.com](https://limitless-wildwood-80470.herokuapp.com)
 
 ## 1.3. Usage
 
