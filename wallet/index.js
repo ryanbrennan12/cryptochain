@@ -14,7 +14,7 @@ class Wallet {
   sign(data) {
     return this.keyPair.sign(cryptoHash(data));
   }
-
+//
   createTransaction({ recipient, amount, chain }) {
     if (chain) {
       this.balance = Wallet.calculateBalance({
