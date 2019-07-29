@@ -18,6 +18,7 @@ describe('Wallet', () => {
   it('has a `publicKey`', () => {
     expect(wallet).toHaveProperty('publicKey');
   });
+  //refactor here
 
 
   describe('signing data', () => {
