@@ -21,7 +21,7 @@ Example of a transaction that is sent to a wallet.  That transaction is then min
 
 The following are the deployed nodes existing in the network which are all able to interact with one another and maintain the same blockchain.
 
- - Node 1: [www.stellumcoinone.com](https://quiet-wave-32128.herokuapp.com)
+ - USE Node 1: [www.stellumcoinone.com](https://quiet-wave-32128.herokuapp.com)
  - Node 2: [www.stellumcointwo.com](https://vast-oasis-19068.herokuapp.com)
  - Node 3: [www.stellumcointhree.com](https://guarded-citadel-78699.herokuapp.com)
  - Node 4: [www.stellumcoinfour.com](https://obscure-ridge-16236.herokuapp.com)
