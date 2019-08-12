@@ -31,7 +31,7 @@ The following are the deployed nodes existing in the network which are all able 
 
 ### 1.2.3. Development Setup
 
-This service uses the following dev stack:
+This service uses the following dev  stack:
 
   - Server: [Express/Node/NPM](https://expressjs.com)
   - PubSub: [Redis](https://redis.io/topics/pubsub)
