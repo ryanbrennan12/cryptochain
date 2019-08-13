@@ -13,7 +13,7 @@
  - [1.6 Unit and Integration Tests](#16-unit-and-integration-tests)
 
 ## 1.2 UI
-Example of a transaction that is sent to a wallet.  That transaction is then mined into a block (most blocks have multiple transactions but we are doing only one for the sake of the example) and is added to the blockchain.  Details of the transactions within each block are able to be viewed  by the user when clicked through.
+Example of a transaction that is sent to a wallet.  That transaction is then mined into a block (most blocks have multiple transactions but we are doing only one for the sake of the example) and is added to the blockchain.  Details of the transactions within each block are able to be viewed by the user when clicked through.
 
 ![upload](UI.gif)
 
