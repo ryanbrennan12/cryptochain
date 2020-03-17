@@ -9,12 +9,12 @@ const devSeed = () => {
       recipient, amount, chain: blockchain.chain
     });
 
-    transactionPool.setTransaction(transaction);
-  };
+  //   transactionPool.setTransaction(transaction);
+  // };
 
-  const walletAction = () => generateWalletTransaction({
-    wallet, recipient: walletFoo.publicKey, amount: 5
-  });
+  // const walletAction = () => generateWalletTransaction({
+  //   wallet, recipient: walletFoo.publicKey, amount: 5
+  // });
 
   const walletFooAction = () => generateWalletTransaction({
     wallet: walletFoo, recipient: walletBar.publicKey, amount: 10
